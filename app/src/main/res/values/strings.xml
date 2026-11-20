@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="hello">Merhaba Android!</string>
+    <string name="sayfa1">Sayfa 1</string>
+    <string name="sayfa2">Sayfa 2</string>
+    <string name="sayfa3">Sayfa 3</string>
+    <string name="home">Anasayfa</string>
+    <string name="profile">Profil</string>
+    <string name="settings">Ayarlar</string>
+    <string name="menu_title">Menü</string>
+    <string name="menu_subtitle">Çalışma alanınıza hoş geldiniz</string>
+    <string name="welcome_title">Sağlık Bilimleri Üniversitesi</string>
+    <string name="welcome_subtitle">İçeriğe ulaşmak için keşfetmeye başlayın.</string>
+    <string name="explore_button">İçeriği keşfet</string>
+    <string name="content_page_1">İçerik: Sayfa 1</string>
+    <string name="content_page_2">İçerik: Sayfa 2</string>
+    <string name="content_page_3">İçerik: Sayfa 3</string>
+</resources>
