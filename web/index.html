@@ -3,57 +3,419 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#123b5d">
+    <meta name="theme-color" content="#17253a">
     <meta
       name="description"
-      content="Sağlık Bilimleri Üniversitesi çalışma alanı"
+      content="Marmara Üniversitesi Sağlık Bilimleri Fakültesi için kat bilgileri, kampüs rehberi ve acil durum bağlantıları."
     >
-    <title>Sağlık Bilimleri Üniversitesi</title>
+    <meta property="og:title" content="Marmara Üniversitesi | Sağlık Bilimleri Fakültesi">
+    <meta
+      property="og:description"
+      content="Başıbüyük Sağlık Yerleşkesi için kat rehberi ve doğrulanmış acil durum bilgileri."
+    >
+    <title>Marmara Üniversitesi | Sağlık Bilimleri Fakültesi</title>
+    <link
+      rel="icon"
+      href="https://www.marmara.edu.tr/_assets/marmara/custom/images/favicon.ico"
+    >
+    <link rel="preconnect" href="https://www.marmara.edu.tr">
+    <link rel="preconnect" href="https://sbf.marmara.edu.tr">
     <link rel="stylesheet" href="./styles.css">
     <script src="./app.js" defer></script>
   </head>
   <body>
-    <header class="topbar">
-      <button
-        class="menu-toggle"
-        id="menu-toggle"
-        type="button"
-        aria-label="Menüyü aç"
-        aria-controls="side-menu"
-        aria-expanded="false"
-      >
-        <span aria-hidden="true">☰</span>
-      </button>
-      <a class="brand" href="#/" aria-label="Anasayfa">
-        Sağlık Bilimleri Üniversitesi
+    <a class="skip-link" href="#main-content">Ana içeriğe geç</a>
+
+    <div class="intro-screen" id="intro-screen" aria-label="Marmara Üniversitesi">
+      <div class="intro-content">
+        <img
+          class="intro-logo"
+          src="https://www.marmara.edu.tr/_assets/marmara/custom/images/mar_logo.png?v=1.1"
+          alt="Marmara Üniversitesi"
+        >
+        <span class="intro-rule" aria-hidden="true"></span>
+        <p>Sağlık Bilimleri Fakültesi</p>
+        <button class="intro-skip" id="intro-skip" type="button">Geç</button>
+      </div>
+    </div>
+
+    <header class="site-header" id="top">
+      <a class="brand" href="#kat-rehberi" aria-label="Marmara Üniversitesi Sağlık Bilimleri Fakültesi ana sayfa">
+        <span class="brand-mark">
+          <img
+            src="https://www.marmara.edu.tr/_assets/marmara/custom/images/mar_logo.png?v=1.1"
+            alt=""
+          >
+        </span>
+        <span class="brand-copy">
+          <span class="brand-university">Marmara Üniversitesi</span>
+          <span class="brand-faculty">Sağlık Bilimleri Fakültesi</span>
+        </span>
       </a>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Ana menü">
+        <a href="#kat-rehberi">Kat rehberi</a>
+        <a href="#acil-durum">Acil durum</a>
+        <a href="#bolumler">Bölümler</a>
+        <a href="#ulasim">Ulaşım</a>
+      </nav>
+
+      <div class="header-actions">
+        <button
+          class="icon-button contrast-toggle"
+          id="contrast-toggle"
+          type="button"
+          aria-label="Yüksek kontrastı aç"
+          aria-pressed="false"
+          title="Yüksek kontrast"
+        >
+          <span aria-hidden="true">◐</span>
+        </button>
+        <a class="header-emergency" href="tel:112">
+          <span aria-hidden="true">112</span>
+          <span>Acil çağrı</span>
+        </a>
+        <button
+          class="icon-button menu-toggle"
+          id="menu-toggle"
+          type="button"
+          aria-label="Menüyü aç"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
     </header>
 
-    <button
-      class="backdrop"
-      id="menu-backdrop"
-      type="button"
-      aria-label="Menüyü kapat"
-      hidden
-    ></button>
+    <main id="main-content">
+      <section class="floor-section section-shell" id="kat-rehberi" aria-labelledby="floor-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> 01 / KAT REHBERİ</p>
+            <h2 id="floor-title">Bulunduğunuz katı<br><em>seçin.</em></h2>
+          </div>
+          <p class="section-intro">
+            Aşağıdaki birim adları Marmara Üniversitesi kampüs haritasında listelenen
+            konumlardır. Kat düğmeleri bilinen noktaları gösterir; ölçekli iç plan
+            veya tahliye güzergâhı değildir.
+          </p>
+        </div>
 
-    <aside class="side-menu" id="side-menu" aria-label="Ana menü" hidden>
-      <div class="menu-heading">
-        <h2>Menü</h2>
-        <p>Çalışma alanınıza hoş geldiniz</p>
-      </div>
-      <nav class="navigation" aria-label="Sayfalar">
-        <a href="#/" data-route="home">Anasayfa</a>
-        <a href="#/profile" data-route="profile">Profil</a>
-        <a href="#/settings" data-route="settings">Ayarlar</a>
-        <a href="#/page1" data-route="page1">Sayfa 1</a>
-        <a href="#/page2" data-route="page2">Sayfa 2</a>
-        <a href="#/page3" data-route="page3">Sayfa 3</a>
-      </nav>
-    </aside>
+        <div class="floor-layout">
+          <div class="floor-card">
+            <div class="floor-card-top">
+              <div>
+                <span class="card-overline">KAT SEÇİMİ</span>
+                <h3>Kat bilgileri</h3>
+              </div>
+              <span class="floor-count" id="floor-count">05 <small>seviye</small></span>
+            </div>
+            <div class="floor-selector" id="floor-selector" role="group" aria-label="Kat seçin"></div>
+            <p class="floor-source-note">
+              <span aria-hidden="true">i</span>
+              Yalnızca resmî kampüs haritasında adı geçen seviyeler listelenir;
+              bu liste binanın tüm katlarını kapsadığını iddia etmez.
+            </p>
+            <a
+              class="text-link"
+              href="https://sbf.marmara.edu.tr/kampus-haritasi"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resmî kampüs haritası <span aria-hidden="true">↗</span>
+            </a>
+          </div>
 
-    <main class="main-content" id="main-content" tabindex="-1">
-      <section class="welcome-card" id="page-content" aria-live="polite"></section>
+          <div class="plan-card" aria-live="polite">
+            <div class="plan-card-header">
+              <div>
+                <span class="card-overline">SEÇİLİ SEVİYE</span>
+                <h3 id="selected-floor-title">Kat bilgisi yükleniyor</h3>
+              </div>
+              <span class="plan-status"><span aria-hidden="true"></span> İç plan bekleniyor</span>
+            </div>
+            <div class="plan-display" id="plan-display">
+              <div class="plan-grid" aria-hidden="true"></div>
+              <div class="plan-placeholder">
+                <span class="plan-placeholder-icon" aria-hidden="true">⌑</span>
+                <span class="plan-placeholder-label">KAT YERLEŞİM ÇİZİMİ</span>
+                <strong>Resmî iç plan<br>henüz yayımlanmadı</strong>
+                <span class="plan-placeholder-detail">
+                  Kapı, merdiven ve çıkış konumları doğrulanmış çizimle eklenecektir.
+                </span>
+              </div>
+            </div>
+            <div class="plan-card-footer">
+              <div>
+                <span class="card-overline">KAMPÜS HARİTASINDAKİ NOKTA</span>
+                <p id="selected-floor-location"></p>
+              </div>
+              <span class="verified-badge">
+                <span aria-hidden="true">✓</span> Kaynaklı bilgi
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="plan-disclaimer">
+          <span class="disclaimer-icon" aria-hidden="true">!</span>
+          <p>
+            <strong>Önemli:</strong> Bu sayfa resmî tahliye planı değildir. Acil durumda
+            binadaki yönlendirme levhalarını ve görevlilerin talimatlarını izleyin.
+            Gerçek kat planları yayımlanana kadar uygulamada acil çıkış işaretlenmemiştir.
+          </p>
+          <a
+            href="https://aadk.marmara.edu.tr/yerleske-tahliye-ve-mudahale-planlari"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Üniversitenin tahliye bilgileri <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="hero section-shell" id="fakulte-giris" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> BAŞIBÜYÜK SAĞLIK YERLEŞKESİ</p>
+          <h1 id="hero-title">Mekânı tanıyın.<br><em>Güvenle</em> yol alın.</h1>
+          <p class="hero-description">
+            Marmara Üniversitesi Sağlık Bilimleri Fakültesi için kat bilgileri,
+            kampüs bağlantıları ve doğrulanmış acil durum iletişim noktaları.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#kat-rehberi">
+              Kat rehberine dön <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-outline" href="#acil-durum">
+              Acil durum bilgileri
+            </a>
+          </div>
+          <div class="hero-location">
+            <span class="location-mark" aria-hidden="true">●</span>
+            <span>Maltepe · İstanbul</span>
+            <span class="hero-location-divider" aria-hidden="true"></span>
+            <a href="https://sbf.marmara.edu.tr/" target="_blank" rel="noopener noreferrer">
+              Fakültenin resmî sitesi <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            class="hero-image"
+            src="https://sbf.marmara.edu.tr/dosya/sbf/slide/2026/04/bina-3_1777358973.jpg"
+            alt="Marmara Üniversitesi Sağlık Bilimleri Fakültesi binası"
+          >
+          <div class="image-caption">
+            <span class="caption-kicker">FAKÜLTE</span>
+            <span>Marmara Üniversitesi</span>
+            <a
+              href="https://sbf.marmara.edu.tr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Fotoğrafın bulunduğu Marmara Üniversitesi Sağlık Bilimleri Fakültesi resmî sitesini aç"
+            >↗</a>
+          </div>
+          <div class="visual-index" aria-hidden="true">01 / 04</div>
+          <div class="hero-vertical-label" aria-hidden="true">MARMARA · SBF</div>
+        </div>
+
+        <div class="hero-bottom">
+          <span class="hero-bottom-label">KULLANIM REHBERİ</span>
+          <p>
+            Kat noktaları resmî kampüs haritasından derlenmiştir. İç kat çizimleri
+            ve çıkış konumları yayımlanmadığı için bu sayfada rota veya çıkış işareti gösterilmez.
+          </p>
+          <a href="#kat-rehberi" aria-label="Kat rehberine git">↑</a>
+        </div>
+      </section>
+
+      <section class="emergency-section" id="acil-durum" aria-labelledby="emergency-title">
+        <div class="section-shell emergency-inner">
+          <div class="emergency-heading">
+            <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> 02 / ACİL DURUM</p>
+            <h2 id="emergency-title">Acil durumda<br><em>önce 112.</em></h2>
+            <p>
+              Marmara Üniversitesi’nin güvenlik bilgilendirmesine göre acil durumda
+              önce 112’yi, ardından Güvenlik İletişim Merkezi’ni arayın.
+            </p>
+            <a
+              class="light-link"
+              href="https://www.marmara.edu.tr/kampuste-yasam/yasam/guvenlik/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Resmî güvenlik bilgisi <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="emergency-actions">
+            <a class="emergency-card emergency-card-primary" href="tel:112">
+              <span class="emergency-card-label">ACİL ÇAĞRI</span>
+              <span class="emergency-card-number">112</span>
+              <span class="emergency-card-description">Sağlık · İtfaiye · Polis</span>
+              <span class="emergency-card-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="emergency-card" href="tel:+902167771111">
+              <span class="emergency-card-label">GÜVENLİK İLETİŞİM MERKEZİ</span>
+              <span class="emergency-card-number emergency-card-number-small">0 216 777 1111</span>
+              <span class="emergency-card-description">Marmara Üniversitesi · 7/24</span>
+              <span class="emergency-card-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="emergency-footnote">
+            Aramada olayın türünü ve bulunduğunuz yeri açıkça belirtin.
+            Bu telefon düğmeleri mobil cihazlarda arama ekranını açar.
+          </p>
+        </div>
+      </section>
+
+      <section class="assembly-section section-shell" aria-labelledby="assembly-title">
+        <div class="assembly-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> 03 / TOPLANMA ALANI</p>
+          <h2 id="assembly-title">Dışarı çıktıktan sonra<br><em>güvenli noktaya ilerleyin.</em></h2>
+          <p>
+            Üniversitenin acil durum sayfasında Başıbüyük Yerleşkesi için belirtilen
+            toplanma alanı Sağlık Yerleşkesi Merkez Otopark Alanı’dır.
+          </p>
+          <a
+            class="button button-primary"
+            href="https://aadk.marmara.edu.tr/acil-durum-toplanma-alanlari"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resmî toplanma alanları <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="assembly-card">
+          <div class="assembly-card-top">
+            <span class="assembly-pin" aria-hidden="true">⌖</span>
+            <span class="assembly-label">BAŞIBÜYÜK YERLEŞKESİ</span>
+          </div>
+          <h3>Sağlık Yerleşkesi<br>Merkez Otopark Alanı</h3>
+          <div class="assembly-capacity">
+            <strong>4.000</strong>
+            <span>kişilik kapasite<br><small>resmî listede belirtilen</small></span>
+          </div>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Marmara+Universitesi+Recep+Tayyip+Erdo%C4%9Fan+Ba%C5%9F%C4%B1b%C3%BCy%C3%BCk+Sa%C4%9Fl%C4%B1k+K%C3%BClliyesi"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="assembly-map-link"
+          >Yerleşkeyi haritada aç <span aria-hidden="true">↗</span></a>
+          <span class="assembly-decoration" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="faculty-section section-shell" id="bolumler" aria-labelledby="faculty-title">
+        <div class="section-heading faculty-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> 04 / FAKÜLTE</p>
+            <h2 id="faculty-title">Sağlık bilimlerinde<br><em>birlikte öğrenme.</em></h2>
+          </div>
+          <div class="faculty-intro">
+            <p>
+              Fakültenin resmî sitesinde listelenen akademik bölümlere buradan
+              ulaşabilirsiniz. Bölüm sayfaları Marmara Üniversitesi alan adında açılır.
+            </p>
+            <form class="department-search" id="department-search" role="search">
+              <label class="sr-only" for="department-query">Bölümlerde ara</label>
+              <input
+                id="department-query"
+                name="q"
+                type="search"
+                placeholder="Bölümlerde ara"
+                autocomplete="off"
+              >
+              <button type="submit" aria-label="Bölümlerde ara"><span aria-hidden="true">⌕</span></button>
+            </form>
+          </div>
+        </div>
+
+        <p class="search-status" id="search-status" aria-live="polite"></p>
+        <div class="department-grid" id="department-grid"></div>
+        <div class="faculty-more">
+          <span>Fakülte, akademik birimler ve duyurular</span>
+          <a
+            class="text-link"
+            href="https://sbf.marmara.edu.tr/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Resmî fakülte sitesini ziyaret edin <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="contact-section" id="ulasim" aria-labelledby="contact-title">
+        <div class="section-shell contact-layout">
+          <div class="contact-heading">
+            <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> 05 / ULAŞIM & İLETİŞİM</p>
+            <h2 id="contact-title">Başıbüyük’te<br><em>buluşalım.</em></h2>
+            <p>Sağlık Bilimleri Fakültesi · Marmara Üniversitesi</p>
+          </div>
+          <div class="contact-details">
+            <div class="contact-row">
+              <span class="contact-label">ADRES</span>
+              <p>
+                Başıbüyük Mah. Süreyyapaşa Başıbüyük Yolu Sk. 4 B<br>
+                Maltepe / İstanbul
+              </p>
+              <button class="copy-address" id="copy-address" type="button">
+                Adresi kopyala <span aria-hidden="true">▣</span>
+              </button>
+            </div>
+            <div class="contact-row contact-row-inline">
+              <div>
+                <span class="contact-label">FAKÜLTE TELEFONU</span>
+                <a href="tel:+902167775700">0 216 777 57 00</a>
+              </div>
+              <div>
+                <span class="contact-label">E-POSTA</span>
+                <a href="mailto:sbf@marmara.edu.tr">sbf@marmara.edu.tr</a>
+              </div>
+            </div>
+            <div class="contact-links">
+              <a
+                class="button button-light"
+                href="https://www.google.com/maps/search/?api=1&query=Marmara+Universitesi+Recep+Tayyip+Erdo%C4%9Fan+Ba%C5%9F%C4%B1b%C3%BCy%C3%BCk+Sa%C4%9Fl%C4%B1k+K%C3%BClliyesi"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Haritada yol tarifi <span aria-hidden="true">↗</span></a>
+              <a
+                class="light-link"
+                href="https://sbf.marmara.edu.tr/iletisim/iletisim-ve-ulasim"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Resmî iletişim sayfası <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="section-shell footer-top">
+        <a class="footer-brand" href="#kat-rehberi">
+          <img
+            src="https://www.marmara.edu.tr/_assets/marmara/custom/images/mar_logo.png?v=1.1"
+            alt=""
+          >
+          <span>Marmara Üniversitesi<br><small>Sağlık Bilimleri Fakültesi</small></span>
+        </a>
+        <div class="source-links">
+          <span class="footer-label">RESMÎ KAYNAKLAR</span>
+          <a href="https://sbf.marmara.edu.tr/kampus-haritasi" target="_blank" rel="noopener noreferrer">Kampüs haritası</a>
+          <a href="https://aadk.marmara.edu.tr/yerleske-tahliye-ve-mudahale-planlari" target="_blank" rel="noopener noreferrer">Tahliye ve müdahale planları</a>
+          <a href="https://aadk.marmara.edu.tr/acil-durum-toplanma-alanlari" target="_blank" rel="noopener noreferrer">Toplanma alanları</a>
+          <a href="https://www.marmara.edu.tr/kampuste-yasam/yasam/guvenlik/" target="_blank" rel="noopener noreferrer">Güvenlik bilgileri</a>
+        </div>
+        <a class="back-to-top" href="#top">Başa dön <span aria-hidden="true">↑</span></a>
+      </div>
+      <div class="section-shell footer-bottom">
+        <p>
+          Bu sayfa bağımsız bir bilgilendirme arayüzüdür; Marmara Üniversitesi’nin
+          resmî tahliye planı veya kurumsal web sitesi değildir.
+        </p>
+        <p>© <span id="current-year"></span> · Kaynaklar ilgili resmî sayfalara bağlanır.</p>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>

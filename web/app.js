@@ -1,104 +1,234 @@
-const pages = {
-  home: {
-    title: "Sağlık Bilimleri Üniversitesi",
-    description: "İçeriğe ulaşmak için keşfetmeye başlayın.",
-    action: '<a class="primary-link" href="#/grid">İçeriği keşfet</a>',
+const floors = [
+  {
+    id: "-1",
+    label: "−1. Kat",
+    detail: "Konferans salonu",
+    location: "Sağlık Bilimleri Fakültesi Konferans Salonu",
   },
-  page1: {
-    title: "Sayfa 1",
-    description: "İçerik: Sayfa 1",
+  {
+    id: "1",
+    label: "1. Kat",
+    detail: "Ebelik laboratuvarı",
+    location: "Sağlık Bilimleri Fakültesi Ebelik Bölümü Laboratuvarı",
   },
-  page2: {
-    title: "Sayfa 2",
-    description: "İçerik: Sayfa 2",
+  {
+    id: "2",
+    label: "2. Kat",
+    detail: "Hemşirelik laboratuvarı",
+    location: "Sağlık Bilimleri Fakültesi Hemşirelik Bölümü Laboratuvarı",
   },
-  page3: {
-    title: "Sayfa 3",
-    description: "İçerik: Sayfa 3",
+  {
+    id: "3",
+    label: "3. Kat",
+    detail: "Beslenme ve diyet laboratuvarı",
+    location: "Sağlık Bilimleri Fakültesi Beslenme ve Diyet Bölümü Laboratuvarı",
   },
-  profile: {
-    title: "Profil",
-    description: "Bu bölüm henüz hazır değil.",
+  {
+    id: "4",
+    label: "4. Kat",
+    detail: "Dekanlık · FTR laboratuvarı",
+    location: "Sağlık Bilimleri Fakültesi Dekanlığı ve Fizyoterapi ve Rehabilitasyon Bölümü Laboratuvarı",
   },
-  settings: {
-    title: "Ayarlar",
-    description: "Bu bölüm henüz hazır değil.",
-  },
-};
+];
 
-const pageContent = document.querySelector("#page-content");
+const departments = [
+  {
+    name: "Beslenme ve Diyetetik",
+    url: "https://bdy-sbf.marmara.edu.tr/",
+  },
+  {
+    name: "Ebelik",
+    url: "https://ebe-sbf.marmara.edu.tr/",
+  },
+  {
+    name: "Fizyoterapi ve Rehabilitasyon",
+    url: "https://ftr-sbf.marmara.edu.tr/",
+  },
+  {
+    name: "Hemşirelik",
+    url: "https://hem-sbf.marmara.edu.tr/",
+  },
+  {
+    name: "Sağlık Yönetimi",
+    url: "https://syn-sbf.marmara.edu.tr/",
+  },
+  {
+    name: "Dil ve Konuşma Terapisi",
+    url: "https://sbf.marmara.edu.tr/bolumler/dil-ve-konusma-terapisi-bolumu",
+  },
+  {
+    name: "Odyoloji",
+    url: "https://sbf.marmara.edu.tr/bolumler/odyoloji-bolumu",
+  },
+  {
+    name: "Temel Sağlık Bilimleri",
+    url: "https://tsb-sbf.marmara.edu.tr/",
+  },
+];
+
+const address =
+  "Marmara Üniversitesi Sağlık Bilimleri Fakültesi, Başıbüyük Mah. Süreyyapaşa Başıbüyük Yolu Sk. 4 B, Maltepe / İstanbul";
+
+const floorSelector = document.querySelector("#floor-selector");
+const selectedFloorTitle = document.querySelector("#selected-floor-title");
+const selectedFloorLocation = document.querySelector("#selected-floor-location");
+const departmentGrid = document.querySelector("#department-grid");
+const departmentSearch = document.querySelector("#department-search");
+const departmentQuery = document.querySelector("#department-query");
+const searchStatus = document.querySelector("#search-status");
 const menuToggle = document.querySelector("#menu-toggle");
-const sideMenu = document.querySelector("#side-menu");
-const menuBackdrop = document.querySelector("#menu-backdrop");
-const mainContent = document.querySelector("#main-content");
-const navigationLinks = document.querySelectorAll(".navigation a");
+const primaryNav = document.querySelector("#primary-nav");
+const introScreen = document.querySelector("#intro-screen");
+const toast = document.querySelector("#toast");
 
-function currentRoute() {
-  const route = window.location.hash.replace(/^#\/?/, "").split("/")[0];
-  return route || "home";
-}
+function renderFloors(selectedId) {
+  floorSelector.innerHTML = floors
+    .map(
+      (floor) => `
+        <button
+          class="floor-button"
+          type="button"
+          data-floor-id="${floor.id}"
+          aria-pressed="${floor.id === selectedId}"
+        >
+          <span class="floor-button-title">${floor.label}</span>
+          <span class="floor-button-detail">${floor.detail}</span>
+        </button>
+      `,
+    )
+    .join("");
 
-function renderPage() {
-  const route = currentRoute();
-
-  if (route === "grid") {
-    pageContent.innerHTML = `
-      <h1>İçerik</h1>
-      <div class="tile-grid" role="list" aria-label="İçerik listesi">
-        ${Array.from({ length: 8 }, (_, index) => `
-          <div class="tile" role="listitem">${index + 1}</div>
-        `).join("")}
-      </div>
-    `;
-  } else {
-    const page = pages[route] || pages.home;
-    pageContent.innerHTML = `
-      <h1>${page.title}</h1>
-      <p>${page.description}</p>
-      ${page.action || ""}
-    `;
-  }
-
-  navigationLinks.forEach((link) => {
-    if (link.dataset.route === route) {
-      link.setAttribute("aria-current", "page");
-    } else {
-      link.removeAttribute("aria-current");
-    }
+  floorSelector.querySelectorAll(".floor-button").forEach((button) => {
+    button.addEventListener("click", () => selectFloor(button.dataset.floorId));
   });
-  document.title = `${route === "home" ? pages.home.title : pages[route]?.title || "İçerik"} | Çalışma Alanı`;
 }
 
-function setMenuOpen(open) {
-  sideMenu.hidden = !open;
-  menuBackdrop.hidden = !open;
-  menuToggle.setAttribute("aria-expanded", String(open));
-  menuToggle.setAttribute("aria-label", open ? "Menüyü kapat" : "Menüyü aç");
+function selectFloor(floorId) {
+  const floor = floors.find((item) => item.id === floorId);
 
-  if (open) {
-    sideMenu.querySelector("a")?.focus();
+  if (!floor) {
+    return;
+  }
+
+  selectedFloorTitle.textContent = floor.label;
+  selectedFloorLocation.textContent = floor.location;
+  renderFloors(floorId);
+}
+
+function renderDepartments(query = "") {
+  const normalizedQuery = query.trim().toLocaleLowerCase("tr-TR");
+  const visibleDepartments = departments.filter((department) =>
+    department.name.toLocaleLowerCase("tr-TR").includes(normalizedQuery),
+  );
+
+  departmentGrid.innerHTML = visibleDepartments
+    .map(
+      (department) => `
+        <a
+          class="department-card"
+          href="${department.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="department-number">${String(departments.indexOf(department) + 1).padStart(2, "0")}</span>
+          <strong>${department.name}</strong>
+          <span class="department-arrow" aria-hidden="true">↗</span>
+        </a>
+      `,
+    )
+    .join("");
+
+  if (visibleDepartments.length === 0) {
+    searchStatus.textContent = "Aramanızla eşleşen bölüm bulunamadı.";
+  } else if (normalizedQuery) {
+    searchStatus.textContent = `${visibleDepartments.length} bölüm bulundu.`;
   } else {
-    menuToggle.focus();
+    searchStatus.textContent = "";
   }
 }
 
-menuToggle.addEventListener("click", () => {
-  setMenuOpen(sideMenu.hidden);
+function closeMenu() {
+  primaryNav.classList.remove("is-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "Menüyü aç");
+}
+
+let toastTimeout;
+
+function showToast(message) {
+  window.clearTimeout(toastTimeout);
+  toast.textContent = message;
+  toast.classList.add("is-visible");
+  toastTimeout = window.setTimeout(() => {
+    toast.classList.remove("is-visible");
+  }, 3600);
+}
+
+departmentSearch.addEventListener("submit", (event) => {
+  event.preventDefault();
+  renderDepartments(departmentQuery.value);
+  document.querySelector("#bolumler").scrollIntoView({ behavior: "smooth" });
 });
 
-menuBackdrop.addEventListener("click", () => setMenuOpen(false));
+departmentQuery.addEventListener("input", () => {
+  renderDepartments(departmentQuery.value);
+});
 
-sideMenu.addEventListener("click", (event) => {
+menuToggle.addEventListener("click", () => {
+  const isOpen = primaryNav.classList.toggle("is-open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute("aria-label", isOpen ? "Menüyü kapat" : "Menüyü aç");
+});
+
+primaryNav.addEventListener("click", (event) => {
   if (event.target.closest("a")) {
-    setMenuOpen(false);
+    closeMenu();
   }
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !sideMenu.hidden) {
-    setMenuOpen(false);
+  if (event.key === "Escape") {
+    closeMenu();
+    introScreen.classList.add("is-dismissed");
   }
 });
 
-window.addEventListener("hashchange", renderPage);
-renderPage();
+document.querySelector("#contrast-toggle").addEventListener("click", (event) => {
+  const button = event.currentTarget;
+  const isEnabled = document.body.classList.toggle("high-contrast");
+  button.setAttribute("aria-pressed", String(isEnabled));
+  button.setAttribute(
+    "aria-label",
+    isEnabled ? "Yüksek kontrastı kapat" : "Yüksek kontrastı aç",
+  );
+  showToast(isEnabled ? "Yüksek kontrast açıldı." : "Standart görünüm açıldı.");
+});
+
+document.querySelector("#copy-address").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(address);
+    showToast("Fakülte adresi panoya kopyalandı.");
+  } catch (error) {
+    console.error("Adres panoya kopyalanamadı.", error);
+    showToast("Adres kopyalanamadı. Adresi seçip elle kopyalayabilirsiniz.");
+  }
+});
+
+document.querySelector("#intro-skip").addEventListener("click", () => {
+  introScreen.classList.add("is-dismissed");
+});
+
+introScreen.addEventListener("animationend", (event) => {
+  if (event.animationName === "intro-out" || event.animationName === "intro-dismiss") {
+    introScreen.hidden = true;
+  }
+});
+
+document.querySelector("#current-year").textContent = String(new Date().getFullYear());
+
+renderDepartments();
+selectFloor("4");
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  introScreen.classList.add("is-dismissed");
+}

@@ -4,16 +4,31 @@ Bu klasör basit bir Android uygulaması iskeleti içerir. Android Studio ile a�
 
 ## Web sürümü ve GitHub Pages yayını
 
-Uygulamanın tarayıcıda çalışan sürümü `web/` klasöründedir. GitHub Pages iş akışı, `main` dalına web dosyaları gönderildiğinde bu klasörü otomatik olarak yayınlar.
+Türkçe, giriş gerektirmeyen web sürümü `web/` klasöründedir. Fakülte, kat rehberi, acil durum, bölümler ve ulaşım bölümlerindeki etkileşimler tarayıcıda çalışır; bir backend veya kullanıcı hesabı kullanılmaz.
 
-Yayınlamak için:
+Kat rehberindeki birim/kat adları ve fakülte bilgileri Marmara Üniversitesi'nin resmî sayfalarına dayanır. Ancak yayımlanmış doğrulanmış iç kat planı ve acil çıkış koordinatları bulunmadığından, sayfa sahte bir plan veya tahliye rotası göstermez. Kat seçimindeki bilgiler tam bina envanteri değil, resmî kampüs haritasında listelenen noktalardır. Gerçek tahliye için binadaki levhaları ve görevlilerin yönlendirmelerini izleyin.
 
-1. `android-basic-app` klasörünü GitHub'da bir depoya gönderin. Depo adı ve sahibi web adresinin bir parçası olur.
+Bilgi kaynakları:
+
+- [Sağlık Bilimleri Fakültesi](https://sbf.marmara.edu.tr/)
+- [Fakülte kampüs haritası](https://sbf.marmara.edu.tr/kampus-haritasi)
+- [Fakülte iletişim ve ulaşım](https://sbf.marmara.edu.tr/iletisim/iletisim-ve-ulasim)
+- [Üniversite güvenlik ve acil durum bilgileri](https://www.marmara.edu.tr/kampuste-yasam/yasam/guvenlik/)
+- [Yerleşke tahliye ve müdahale planları](https://aadk.marmara.edu.tr/yerleske-tahliye-ve-mudahale-planlari)
+- [Acil durum toplanma alanları](https://aadk.marmara.edu.tr/acil-durum-toplanma-alanlari)
+
+Resmî Marmara logosu ve fakülte binası fotoğrafı, Marmara Üniversitesi'nin sitesinden yüklenir. Arayüz bağımsız bir bilgilendirme projesidir; üniversitenin resmî web sitesi veya tahliye dokümanı değildir.
+
+Canlı site: https://alperenozalp.github.io/ISG_PROJE/
+
+Bu depoda GitHub Pages ve `main` dalından otomatik yayınlama ayarlıdır. `web/` dosyalarındaki değişiklikleri `main` dalına gönderdiğinizde Actions yeni sürümü yayınlar.
+
+Başka bir depoda yayınlamak için:
+
+1. `android-basic-app` klasörünü GitHub deposuna gönderin.
 2. Depoda **Settings → Pages → Build and deployment → Source** bölümünden **GitHub Actions** seçin.
 3. `main` dalına gönderim yapın veya **Actions → Deploy web app to GitHub Pages → Run workflow** adımını çalıştırın.
-4. Yayın tamamlanınca **Settings → Pages** bölümünde görünen bağlantıyı açın. Proje deposu bağlantısı genellikle `https://<kullanıcı>.github.io/<depo>/` biçimindedir.
-
-Bu çalışma alanında GitHub deposu bağlantısı bulunmadığından yayın adımı henüz çalıştırılmamıştır. Depoya gönderildikten sonra Actions iş akışı internetten erişilebilir sayfayı oluşturur.
+4. Yayın tamamlanınca adres `https://<kullanıcı>.github.io/<depo>/` biçiminde olur.
 
 Hızlı başlatma (Windows):
 
